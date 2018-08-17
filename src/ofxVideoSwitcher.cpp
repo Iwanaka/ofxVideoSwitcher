@@ -7,6 +7,8 @@ ofxVideoSwitcher::ofxVideoSwitcher():
 	pixFormatId(9)
 {
 	updateDeviceList();
+	resolution[0] = 640;
+	resolution[1] = 480;
 }
 
 //--------------------------------------------------------------
@@ -84,6 +86,8 @@ void ofxVideoSwitcher::gui() {
 
 			}
 
+
+			ImGui::InputInt2("resolution", resolution, 0);
 			
 
 			if (ImGui::Button("apply use camera device")) {
@@ -110,13 +114,13 @@ void ofxVideoSwitcher::setDeviceId(const int& id) {
 //--------------------------------------------------------------
 void ofxVideoSwitcher::apply() {
 
-	int w = video.getWidth();
-	int h = video.getHeight();
+	int w = resolution[0];
+	int h = resolution[1];
 
 	video.close();
 	video.setDeviceID(deviceID);
 	video.setPixelFormat(ofPixelFormat(pixFormatId));
-	video.setup(w, h);
+	video.setup(resolution[0], h);
 
 
 }

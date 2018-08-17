@@ -26,6 +26,7 @@ private:
 	std::string deviceName;
 	int deviceID;
 	int pixFormatId;
+	int resolution[2];
 
 };
 
